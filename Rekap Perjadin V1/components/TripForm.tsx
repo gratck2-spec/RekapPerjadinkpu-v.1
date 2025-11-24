@@ -257,8 +257,8 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
 
             {isPublicTransport && (
               <div className="mt-3 p-4 bg-blue-50 rounded-lg border border-blue-100 animate-fadeIn">
-                <div className="grid grid-cols-1 gap-3">
-                  <div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="col-span-2">
                     <label className="block text-xs font-semibold text-blue-700 mb-1">Nomor Tiket</label>
                     <input
                       type="text"
@@ -267,17 +267,6 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                       onChange={handleChange}
                       className="w-full px-3 py-2 bg-white border border-blue-200 rounded-md focus:ring-1 focus:ring-blue-500 text-sm"
                       placeholder="Contoh: GA123"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-blue-700 mb-1">Harga Tiket (Rp)</label>
-                    <input
-                      type="text"
-                      name="hargaTiket"
-                      value={formatDisplayNumber(formData.hargaTiket)}
-                      onChange={handleNumberChange}
-                      className="w-full px-3 py-2 bg-white border border-blue-200 rounded-md focus:ring-1 focus:ring-blue-500 text-sm"
-                      placeholder="0"
                     />
                   </div>
                   {!isBusTravel && (
@@ -293,6 +282,17 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                       />
                     </div>
                   )}
+                  <div>
+                    <label className="block text-xs font-semibold text-blue-700 mb-1">Harga Tiket (Rp)</label>
+                    <input
+                      type="text"
+                      name="hargaTiket"
+                      value={formatDisplayNumber(formData.hargaTiket)}
+                      onChange={handleNumberChange}
+                      className="w-full px-3 py-2 bg-white border border-blue-200 rounded-md focus:ring-1 focus:ring-blue-500 text-sm"
+                      placeholder="0"
+                    />
+                  </div>
                 </div>
               </div>
             )}
