@@ -28,6 +28,7 @@ export interface Trip {
   akomodasi: number;
   uangMakan: number;
   transportLokal: number;
+  hargaTiket:transportLokal: number;
   hargaTiket: number;
   totalBiaya: number;
   
