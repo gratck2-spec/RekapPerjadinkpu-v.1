@@ -22,12 +22,12 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
     nomorSurat: '',
     nomorNotaDinas: '',
     notaDinasFileUrl: '',
-    biayaBBM: 0,
-    biayaTOL: 0,
-    akomodasi: 0,
-    uangMakan: 0,
-    transportLokal: 0,
-    hargaTiket: 0,
+    biayaBBM: undefined,
+    biayaTOL: undefined,
+    akomodasi: undefined,
+    uangMakan: undefined,
+    transportLokal: undefined,
+    hargaTiket: undefined,
   });
 
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -66,7 +66,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
     
     setFormData(prev => ({
       ...prev,
-      [name]: numericValue === '' ? 0 : parseInt(numericValue, 10)
+      [name]: numericValue === '' ? undefined : parseInt(numericValue, 10)
     }));
   };
 
@@ -120,12 +120,12 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
       nomorSurat: '',
       nomorNotaDinas: '',
       notaDinasFileUrl: '',
-      biayaBBM: 0,
-      biayaTOL: 0,
-      akomodasi: 0,
-      uangMakan: 0,
-      transportLokal: 0,
-      hargaTiket: 0,
+      biayaBBM: undefined,
+      biayaTOL: undefined,
+      akomodasi: undefined,
+      uangMakan: undefined,
+      transportLokal: undefined,
+      hargaTiket: undefined,
     });
     setShowConfirmModal(false);
   };
@@ -296,7 +296,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                       onChange={handleNumberChange}
                       required={isPublicTransport}
                       className="w-full px-3 py-2 bg-white border border-blue-200 rounded-md focus:ring-1 focus:ring-blue-500 text-sm"
-                      placeholder="0"
+                      placeholder=""
                     />
                   </div>
                 </div>
@@ -316,7 +316,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                   value={formatDisplayNumber(formData.biayaBBM)}
                   onChange={handleNumberChange}
                   className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:border-red-500 outline-none"
-                  placeholder="0"
+                  placeholder=""
                 />
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -327,7 +327,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                   value={formatDisplayNumber(formData.biayaTOL)}
                   onChange={handleNumberChange}
                   className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:border-red-500 outline-none"
-                  placeholder="0"
+                  placeholder=""
                 />
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -338,7 +338,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                   value={formatDisplayNumber(formData.akomodasi)}
                   onChange={handleNumberChange}
                   className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:border-red-500 outline-none"
-                  placeholder="0"
+                  placeholder=""
                 />
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -349,7 +349,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                   value={formatDisplayNumber(formData.uangMakan)}
                   onChange={handleNumberChange}
                   className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:border-red-500 outline-none"
-                  placeholder="0"
+                  placeholder=""
                 />
               </div>
               <div className="col-span-2">
@@ -360,7 +360,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                   value={formatDisplayNumber(formData.transportLokal)}
                   onChange={handleNumberChange}
                   className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:border-red-500 outline-none"
-                  placeholder="0"
+                  placeholder=""
                 />
               </div>
 
