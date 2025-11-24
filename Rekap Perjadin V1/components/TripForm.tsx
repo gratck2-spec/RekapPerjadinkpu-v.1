@@ -125,12 +125,10 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
     setShowConfirmModal(false);
   };
 
-  const isPublicTransport = [
-    VehicleType.PESAWAT,
-    VehicleType.KERETA,
-    VehicleType.BUS_TRAVEL,
-    VehicleType.KAPAL
-  ].includes(formData.jenisKendaraan as VehicleType);
+  const isPublicTransport =
+    !!formData.jenisKendaraan &&
+    formData.jenisKendaraan !== VehicleType.PRIBADI &&
+    formData.jenisKendaraan !== VehicleType.DINAS;
 
   const isBusTravel = formData.jenisKendaraan === VehicleType.BUS_TRAVEL;
 
