@@ -192,10 +192,10 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
                     <div className="flex items-center justify-center gap-2">
                       <button
                         onClick={(e) => { e.stopPropagation(); setSelectedTrip(trip); }}
-                        className="text-gray-400 hover:text-blue-600 transition-colors p-2 hover:bg-blue-50 rounded-full"
+                        className="flex items-center gap-1 px-3 py-1.5 text-blue-700 bg-blue-50 hover:bg-blue-600 hover:text-white transition-colors rounded-md text-xs border border-blue-200"
                         title="Preview"
                       >
-                        <Eye size={18} />
+                        <Eye size={16} /> <span>Preview</span>
                       </button>
                       <button
                         onClick={(e) => { e.stopPropagation(); trip.id && onDelete(trip.id); }}
