@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Save, Car, Plane, Train, Bus, Ship, Building2 } from 'lucide-react';
+import { Save, Upload, Car, Plane, Train, Bus, Ship, Building2 } from 'lucide-react';
 import { VehicleType, Trip } from '../types';
 import { Modal } from './Modal';
 
@@ -394,15 +394,15 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                 />
               </div>
               <div>
-                <label className="block text-xs text-gray-500 mb-1">Link File Nota (GDrive)</label>
-                <input
-                  type="url"
-                  name="notaDinasFileUrl"
-                  value={formData.notaDinasFileUrl}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm"
-                  placeholder="Tempel link Google Drive di sini"
-                />
+                <label className="block text-xs text-gray-500 mb-1">Unggah File Nota Dinas (GDrive)</label>
+                <a
+                  href="https://drive.google.com/drive/folders/1vhIyR1maXl6LqDrrtTRVixFnQNGM8D3-?usp=drive_link"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm"
+                >
+                  <Upload size={14} className="mr-2" /> Unggah File Nota Dinas
+                </a>
               </div>
             </div>
           </div>
