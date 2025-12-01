@@ -112,7 +112,7 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
               <th className="px-6 py-3">Keperluan</th>
               <th className="px-6 py-3">Dokumen</th>
               <th className="px-6 py-3 text-right">Total Biaya</th>
-              <th className="px-6 py-3 text-center">Aksi</th>
+              <th className="px-6 py-3 text-center w-28">Aksi</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -188,7 +188,7 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
                   <td className="px-6 py-4 text-right font-mono text-sm text-red-700 font-medium">
                     {formatRupiah(trip.totalBiaya)}
                   </td>
-                  <td className="px-6 py-4 text-center">
+                  <td className="px-6 py-4 text-center w-28 whitespace-nowrap">
                     <div className="flex items-center justify-center gap-2">
                       <button
                         onClick={(e) => { e.stopPropagation(); setSelectedTrip(trip); }}
