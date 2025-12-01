@@ -86,7 +86,8 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl border border-gray-100 flex flex-col h-full">
+    <>
+      <div className="bg-white rounded-2xl shadow-xl border border-gray-100 flex flex-col h-full">
       {/* Toolbar */}
       <div className="px-6 py-5 border-b border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
         <h2 className="text-xl font-bold text-gray-800">Rekap Data</h2>
@@ -265,5 +266,6 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
         </div>
       )}
     </Modal>
+    </>
   );
 };
