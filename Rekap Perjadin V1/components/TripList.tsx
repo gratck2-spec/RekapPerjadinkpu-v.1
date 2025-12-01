@@ -135,9 +135,9 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
               </tr>
             ) : (
               trips.map((trip) => (
-                <tr key={trip.id} onClick={() => setSelectedTrip(trip)} className="hover:bg-red-50/50 transition-colors group cursor-pointer">
+                <tr key={trip.id} className="hover:bg-red-50/50 transition-colors group">
                   <td className="px-6 py-4">
-                    <div className="text-sm font-bold text-gray-900">{trip.nama}</div>
+                    <div className="text-sm font-bold text-gray-900 cursor-pointer hover:underline" onClick={() => setSelectedTrip(trip)} title="Preview detail">{trip.nama}</div>
                     <div className="text-xs text-gray-500 mt-0.5">{trip.tujuan}</div>
                     {trip.hotelName && (
                       <div className="text-[10px] text-gray-400 italic mt-0.5">🏨 {trip.hotelName}</div>
