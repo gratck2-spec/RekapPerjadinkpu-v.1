@@ -403,6 +403,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                 >
                   <Upload size={14} className="mr-2" /> Unggah File Nota Dinas
                 </a>
+                <p className="mt-1 text-xs text-gray-500">Cukup Unggah 1 kali Nota Dinas Untuk 1 Perjadin</p>
               </div>
             </div>
           </div>
