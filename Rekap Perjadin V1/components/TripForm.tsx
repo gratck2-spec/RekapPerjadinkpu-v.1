@@ -360,7 +360,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                   value={formatDisplayNumber(formData.transportLokal)}
                   onChange={handleNumberChange}
                   className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:border-red-500 outline-none"
-                  placeholder="0"
+                  placeholder=""
                 />
               </div>
 
