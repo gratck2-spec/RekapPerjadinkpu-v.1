@@ -1,6 +1,7 @@
-import React from 'react';
-import { FileSpreadsheet, Trash2, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { FileSpreadsheet, Trash2, ExternalLink, Eye } from 'lucide-react';
 import { Trip } from '../types';
+import { Modal } from './Modal';
 
 interface TripListProps {
   trips: Trip[];
@@ -9,6 +10,7 @@ interface TripListProps {
 }
 
 export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) => {
+  const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
   
   const formatRupiah = (amount: number) => {
     return new Intl.NumberFormat('id-ID', {
@@ -133,7 +135,7 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
               </tr>
             ) : (
               trips.map((trip) => (
-                <tr key={trip.id} className="hover:bg-red-50/50 transition-colors group">
+                <tr key={trip.id} onClick={() => setSelectedTrip(trip)} className="hover:bg-red-50/50 transition-colors group cursor-pointer">
                   <td className="px-6 py-4">
                     <div className="text-sm font-bold text-gray-900">{trip.nama}</div>
                     <div className="text-xs text-gray-500 mt-0.5">{trip.tujuan}</div>
@@ -188,7 +190,7 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
                   </td>
                   <td className="px-6 py-4 text-center">
                     <button
-                      onClick={() => trip.id && onDelete(trip.id)}
+                      onClick={(e) => { e.stopPropagation(); trip.id && onDelete(trip.id); }}
                       className="text-gray-400 hover:text-red-600 transition-colors p-2 hover:bg-red-50 rounded-full"
                       title="Hapus"
                     >
@@ -207,5 +209,52 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
         <span>Grand Total: <strong>{formatRupiah(trips.reduce((acc, curr) => acc + curr.totalBiaya, 0))}</strong></span>
       </div>
     </div>
+
+    <Modal
+      isOpen={!!selectedTrip}
+      onClose={() => setSelectedTrip(null)}
+      title="Preview Rekap Perjalanan"
+    >
+      {selectedTrip && (
+        <div className="space-y-2 text-sm text-gray-700">
+          <div className="grid grid-cols-3 gap-2 pb-3 border-b border-gray-100">
+            <span className="font-semibold">Nama:</span>
+            <span className="col-span-2">{selectedTrip.nama}</span>
+            <span className="font-semibold">Tujuan:</span>
+            <span className="col-span-2">{selectedTrip.tujuan}</span>
+            {selectedTrip.hotelName && (
+              <>
+                <span className="font-semibold">Hotel:</span>
+                <span className="col-span-2">{selectedTrip.hotelName}</span>
+              </>
+            )}
+            <span className="font-semibold">Tanggal:</span>
+            <span className="col-span-2">{selectedTrip.tanggalMulai} s/d {selectedTrip.tanggalSelesai}</span>
+            <span className="font-semibold">Kendaraan:</span>
+            <span className="col-span-2">{selectedTrip.jenisKendaraan}</span>
+          </div>
+          <div>
+            <h4 className="font-bold text-gray-800 mb-1">Rincian Biaya</h4>
+            <div className="grid grid-cols-2 gap-1 text-xs">
+              <span>BBM:</span> <span className="text-right">{(selectedTrip.biayaBBM ?? 0).toLocaleString('id-ID')}</span>
+              <span>TOL:</span> <span className="text-right">{(selectedTrip.biayaTOL ?? 0).toLocaleString('id-ID')}</span>
+              <span>Akomodasi:</span> <span className="text-right">{(selectedTrip.akomodasi ?? 0).toLocaleString('id-ID')}</span>
+              <span>Uang Makan:</span> <span className="text-right">{(selectedTrip.uangMakan ?? 0).toLocaleString('id-ID')}</span>
+              <span>Lokal:</span> <span className="text-right">{(selectedTrip.transportLokal ?? 0).toLocaleString('id-ID')}</span>
+              <span>Tiket:</span> <span className="text-right">{(selectedTrip.hargaTiket ?? 0).toLocaleString('id-ID')}</span>
+              <span className="font-bold text-red-600 border-t border-gray-200 pt-1 mt-1">TOTAL:</span>
+              <span className="font-bold text-red-600 border-t border-gray-200 pt-1 mt-1 text-right">Rp {selectedTrip.totalBiaya.toLocaleString('id-ID')}</span>
+            </div>
+          </div>
+          <div className="pt-2">
+            {selectedTrip.notaDinasFileUrl && (
+              <a href={selectedTrip.notaDinasFileUrl} target="_blank" rel="noreferrer" className="text-xs text-blue-600 hover:underline flex items-center">
+                <ExternalLink size={10} className="mr-1" /> Buka File Nota Dinas
+              </a>
+            )}
+          </div>
+        </div>
+      )}
+    </Modal>
   );
 };
