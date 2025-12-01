@@ -37,7 +37,7 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
       "Biaya BBM (Rp)", 
       "Biaya TOL (Rp)", 
       "Akomodasi (Rp)", 
-      "Uang Makan (Rp)", 
+      "Uang Harian (Rp)", 
       "Transport Lokal (Rp)", 
       "Harga Tiket (Rp)",
       "Total Biaya (Rp)",
@@ -59,7 +59,7 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
       trip.biayaBBM,
       trip.biayaTOL,
       trip.akomodasi,
-      trip.uangMakan,
+      (trip.uangHarian ?? trip.uangMakan ?? 0),
       trip.transportLokal,
       (trip.hargaTiket ?? 0),
       trip.totalBiaya,
@@ -249,7 +249,7 @@ export const TripList: React.FC<TripListProps> = ({ trips, loading, onDelete }) 
               <span>BBM:</span> <span className="text-right">{(selectedTrip.biayaBBM ?? 0).toLocaleString('id-ID')}</span>
               <span>TOL:</span> <span className="text-right">{(selectedTrip.biayaTOL ?? 0).toLocaleString('id-ID')}</span>
               <span>Akomodasi:</span> <span className="text-right">{(selectedTrip.akomodasi ?? 0).toLocaleString('id-ID')}</span>
-              <span>Uang Harian:</span> <span className="text-right">{(selectedTrip.uangMakan ?? 0).toLocaleString('id-ID')}</span>
+              <span>Uang Harian:</span> <span className="text-right">{(selectedTrip.uangHarian ?? selectedTrip.uangMakan ?? 0).toLocaleString('id-ID')}</span>
               <span>Lokal:</span> <span className="text-right">{(selectedTrip.transportLokal ?? 0).toLocaleString('id-ID')}</span>
               <span>Tiket:</span> <span className="text-right">{(selectedTrip.hargaTiket ?? 0).toLocaleString('id-ID')}</span>
               <span className="font-bold text-red-600 border-t border-gray-200 pt-1 mt-1">TOTAL:</span>

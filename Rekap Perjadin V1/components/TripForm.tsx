@@ -25,7 +25,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
     biayaBBM: undefined,
     biayaTOL: undefined,
     akomodasi: undefined,
-    uangMakan: undefined,
+    uangHarian: undefined,
     transportLokal: undefined,
     hargaTiket: undefined,
   });
@@ -37,7 +37,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
       (formData.biayaBBM || 0) +
       (formData.biayaTOL || 0) +
       (formData.akomodasi || 0) +
-      (formData.uangMakan || 0) +
+      (formData.uangHarian || 0) +
       (formData.transportLokal || 0) +
       (formData.hargaTiket || 0)
     );
@@ -97,7 +97,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
       biayaBBM: formData.biayaBBM || 0,
       biayaTOL: formData.biayaTOL || 0,
       akomodasi: formData.akomodasi || 0,
-      uangMakan: formData.uangMakan || 0,
+      uangHarian: formData.uangHarian || 0,
       transportLokal: formData.transportLokal || 0,
       hargaTiket: formData.hargaTiket || 0,
       totalBiaya: totalBiaya,
@@ -123,7 +123,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
       biayaBBM: undefined,
       biayaTOL: undefined,
       akomodasi: undefined,
-      uangMakan: undefined,
+      uangHarian: undefined,
       transportLokal: undefined,
       hargaTiket: undefined,
     });
@@ -342,11 +342,11 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                 />
               </div>
               <div className="col-span-2 sm:col-span-1">
-                <label className="block text-xs text-gray-500 mb-1">Uang Makan</label>
+                <label className="block text-xs text-gray-500 mb-1">Uang Harian</label>
                 <input
                   type="text"
-                  name="uangMakan"
-                  value={formatDisplayNumber(formData.uangMakan)}
+                  name="uangHarian"
+                  value={formatDisplayNumber(formData.uangHarian)}
                   onChange={handleNumberChange}
                   className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:border-red-500 outline-none"
                   placeholder=""
@@ -453,7 +453,7 @@ export const TripForm: React.FC<TripFormProps> = ({ onSave, userId }) => {
                 <span>BBM:</span> <span className="text-right">{formData.biayaBBM?.toLocaleString('id-ID')}</span>
                 <span>TOL:</span> <span className="text-right">{formData.biayaTOL?.toLocaleString('id-ID')}</span>
                 <span>Akomodasi:</span> <span className="text-right">{formData.akomodasi?.toLocaleString('id-ID')}</span>
-                <span>Uang Makan:</span> <span className="text-right">{formData.uangMakan?.toLocaleString('id-ID')}</span>
+                <span>Uang Harian:</span> <span className="text-right">{formData.uangHarian?.toLocaleString('id-ID')}</span>
                 <span>Lokal:</span> <span className="text-right">{formData.transportLokal?.toLocaleString('id-ID')}</span>
                 <span>Tiket:</span> <span className="text-right">{formData.hargaTiket?.toLocaleString('id-ID')}</span>
                 <span className="font-bold text-red-600 border-t border-gray-200 pt-1 mt-1">TOTAL:</span>
